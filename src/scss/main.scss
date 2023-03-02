@@ -1,0 +1,56 @@
+@use 'globals';
+@import 'navBar';
+@import 'mainScreen';
+@import 'productList';
+@import 'sideBar';
+@import 'singlePage';
+@import 'cartCounter';
+@import 'cartWindow';
+@import 'add';
+@import 'footer';
+
+
+
+
+html,body{
+    overflow-x: hidden;
+
+	button{
+		cursor: pointer;
+	}
+}
+
+.hidden{
+    visibility: hidden;;
+}
+
+.height{
+	
+	display: flex;
+	background-color: white;
+	min-height: 95vh !important;
+
+	transition: all 2s;
+}
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:black;
+	color:white;
+	border-radius:50px;
+	text-align:center;
+	transition: 1s all;
+
+	&:hover{
+		transform: scale(1.4);
+	}
+	
+}
+
+.my-float{
+	margin-top:22px;
+}

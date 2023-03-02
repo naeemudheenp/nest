@@ -1,0 +1,28 @@
+@use 'globals';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@700&display=swap');
+
+
+.mainScreen{
+    background-color: globals.$backGround  ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    min-height: 80vh;
+
+    &__text{
+        color: globals.$fontColor;
+        text-align: left;
+        font-size: 3.5rem;
+        font-family: 'Poppins', sans-serif;
+    }
+    &__img{
+       
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+

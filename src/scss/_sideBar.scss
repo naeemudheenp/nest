@@ -1,0 +1,56 @@
+@use 'globals';
+.sideBar{
+    display: flex;
+    flex-direction: column;
+
+    padding-top: 10vh;
+
+    background-color: globals.$backGround;
+
+    min-height: 100vh;
+
+    &__header{
+        padding-left: 1vw;
+        padding-bottom: 3%;
+        text-align: left;
+        font-weight: bold;
+
+    }
+
+    button{
+        border: none;
+        background-color: black;
+        color: white;
+        border-radius: 2px;
+
+        min-height: 4vh;
+
+        margin-top: 2vh;
+
+    }
+}
+.sideBar__radio{
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+
+
+    gap: 2vh;
+}
+
+.searchWindow{
+    display: grid;
+    grid-template-columns: 0.2fr 1fr;
+
+
+}
+.sideBar__range{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+}

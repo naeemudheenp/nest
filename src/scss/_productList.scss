@@ -1,0 +1,174 @@
+@use 'globals.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@700&display=swap');
+
+
+.cardList{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    gap: 3vw 3vw;
+
+    padding: 2%;
+    
+
+}
+
+
+.card{
+    background-color: white ;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    box-shadow: 0px 2px 11px 6px rgba(0,0,0,0.08);
+    -webkit-box-shadow: 0px 2px 11px 6px rgba(0,0,0,0.08);
+    -moz-box-shadow: 0px 2px 11px 6px rgba(0,0,0,0.08);
+
+    min-height: 60vh;
+
+    border-radius: 20px;
+
+    gap: 6vh;
+
+    font-family: 'Poppins', sans-serif;
+
+    &__img{
+        min-height: 30vh;
+        max-height: 30vh;
+
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin-top: 3%;
+
+        img{
+            width: 40%;
+        }
+    }
+
+    &__flex{
+        min-height: 10vh;
+        max-height: 10vh;
+
+        display: flex;
+        padding-inline: 2%;
+        gap: 3vw;
+
+        justify-content: space-around;
+        align-items: center;
+  
+        &_icon {
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+                  
+
+            background-color: white;
+    
+            border-radius: 50%;
+
+            font-size: 1.3rem;
+                    
+
+            background-color: white;
+    
+            border-radius: 50%;
+
+            min-height: 5vh;
+            min-width: 5vh;
+
+            max-height: 5vh;
+            max-width: 5vh;
+
+
+            
+            box-shadow: 0px 2px 11px 6px rgba(0,0,0,0.08);
+            -webkit-box-shadow: 0px 2px 11px 6px rgba(0,0,0,0.08);
+            -moz-box-shadow: 0px 2px 11px 6px rgba(0,0,0,0.08);
+            
+            box-shadow: 0px 2px 11px 6px rgba(0,0,0,0.08);
+            -webkit-box-shadow: 0px 2px 11px 6px rgba(0,0,0,0.08);
+            -moz-box-shadow: 0px 2px 11px 6px rgba(0,0,0,0.08);
+            
+    
+            
+        }
+    }
+
+    &__price{
+        font-size: 2rem;
+
+        margin-bottom: 3%;
+       
+    }
+
+    &:hover{
+        transform: scale(1.1);
+        transition: all 0.5s ;
+    }
+  
+}
+
+.product__Load{
+
+         
+    box-shadow: 0px 2px 11px 6px rgba(0,0,0,0.08);
+    -webkit-box-shadow: 0px 2px 11px 6px rgba(0,0,0,0.08);
+    -moz-box-shadow: 0px 2px 11px 6px rgba(0,0,0,0.08);
+    background-color: white;
+    border: none;
+    color: globals.$fontColor;
+
+   
+    min-width: 8vw;
+   
+    margin-bottom: 3%;
+
+   margin-left: 43vw;
+
+   transition: all 0.5s;
+   &:hover{
+    transform: scale(1.4);
+   }
+}
+
+.prouductList__header{
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+
+    padding: 1%;
+
+    text-align: center;
+  
+   
+}
+
+#loading-bar-spinner.spinner {
+    left: 50%;
+    margin-left: -20px;
+    top: 50%;
+    margin-top: -20px;
+    position: absolute;
+    z-index: 19 !important;
+    animation: loading-bar-spinner 400ms linear infinite;
+}
+
+#loading-bar-spinner.spinner .spinner-icon {
+    width: 40px;
+    height: 40px;
+    border:  solid 4px transparent;
+    border-top-color:  #03197c !important;
+    border-left-color: #03197c  !important;
+    border-radius: 50%;
+}
+
+@keyframes loading-bar-spinner {
+  0%   { transform: rotate(0deg);   transform: rotate(0deg); }
+  100% { transform: rotate(360deg); transform: rotate(360deg); }
+}

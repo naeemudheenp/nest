@@ -1,0 +1,158 @@
+@use 'globals';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@700&display=swap');
+
+.singlePage{
+    min-height: 100vh;
+ 
+
+    display: flex;
+    flex-direction: row;
+    background-color: globals.$backGround;
+
+    padding: 2%;
+
+    gap: 7vw;
+
+
+
+    &__img{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        min-height:75vh;
+        max-height:75vh;
+
+        min-width: 40%;
+        max-width: 40%;
+
+        border-radius: 20px;
+
+        background-color: white;
+
+        padding: 2%;
+
+        -webkit-box-shadow: 1px -1px 75px -40px rgba(0,0,0,0.26);
+        -moz-box-shadow: 1px -1px 75px -40px rgba(0,0,0,0.26);
+        box-shadow: 1px -1px 75px -40px rgba(0,0,0,0.26);
+
+        transition: all 0.5s;
+        &:hover{
+            transform: scale(1.1);
+        }
+
+        img{
+            width: 50%;
+            height: 50%; 
+            border-radius: 20px;
+        }
+
+
+     
+    }
+    &__text{
+      
+        display: flex;
+        flex-direction: column;
+ 
+        text-align: left;
+        justify-content: center;
+
+        transition: all 0.5s;
+        &:hover{
+            transform: scale(1.04);
+        }
+
+
+        &_title{
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+         
+            word-wrap: normal;
+            width: 70%;
+           
+            margin-bottom: 4vh;
+        }
+
+        &_desc{
+            font-size: 1rem;
+            margin-bottom: 4vh;
+
+        }
+      
+
+        &_rate{
+            margin-bottom: 3vh;
+        }
+
+        &_flex{
+            display: flex;
+            gap: 1vw;
+
+            justify-content: center;
+            align-items: center;
+            &_price{
+                font-weight: bold;
+                background-color: black;
+                color: globals.$backGround;
+                padding: 2%;
+                width: min-content;
+                border-radius: 10px;
+                
+            }
+            &_button{
+                width: 100%;
+               
+                button{
+                    font-weight: bold;
+                    background-color: black;
+                    color: globals.$backGround;
+                    padding: 2%;
+                    border: none;
+                    border-radius: 10px;
+                    min-height: 5.9vh;
+                    max-height: 5.9vh;
+
+                   
+                   
+                }
+            }
+        }
+
+        &_nav{
+            margin-top: 16vh;
+           display: flex;
+           gap: 0.5vw;
+          
+           color: globals.$backGround;
+           border: none;
+
+           
+
+        
+
+           display: flex;
+           align-items: center;
+           
+          
+
+           div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+            border: none;
+
+            min-height: 8vh;
+            min-width: 8vh;
+
+            font-size: 1.5rem;
+
+            border-radius: 55%;
+           }
+            
+           
+        }
+
+    }
+}

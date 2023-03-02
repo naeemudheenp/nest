@@ -1,0 +1,69 @@
+@use 'globals';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@700&display=swap');
+
+
+.navBar{
+    
+    display: flex;
+    flex-direction: row;
+
+    background-color:white;
+    ;
+
+
+    min-height: 8vh;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding-inline:4% ;
+
+
+
+    &__main{
+        font-size: 2rem;
+        font-family: 'Poppins', sans-serif;
+
+        text-align: left;
+        color: globals.$fontColor;
+       
+
+    }
+
+    &__center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+        input{
+            border: none;
+            border-radius: 10px;
+            background-color: rgb(230, 227, 227);
+            color: globals.$fontColor;
+
+            min-width: 30vw;
+            min-height: 4vh;
+
+            text-indent: 10px;
+            transition: all 0.4s ;
+
+            &:hover{
+                transform: scale(1.03);
+            }
+
+        }
+    }
+
+    &__right{
+            display: flex;
+            flex-direction: row;
+            gap: 2vw;
+            
+            color: globals.$fontColor;
+
+            min-height: 4vh;
+            min-width: 8vw;
+        
+    }
+}
+
