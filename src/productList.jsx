@@ -1,142 +1,116 @@
-import {React, useContext} from 'react';
-import { useState,useEffect } from 'react';
+import React from "react";
+import { useContext } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import SingleCard from './singleCard';
-import { UserContext,CartConsumer } from "./App";
+import SingleCard from "./singleCard";
+import { UserContext, } from "./App";
 
+function ProductList() {
+  const [products, setProducts] = useState();
+  const [limit, setLimit] = useState(3);
+  const [isLoading, setLoading] = useState(true);
 
+  const [slice, setSlice] = useState([]);
+  let cart = useContext(UserContext);
+
+  useEffect(() => {
+    getData();
+  }, [cart.filter, cart.search, cart.price]);
+
+  useEffect(() => {}, [limit]);
+
+  return (
  
 
+    <div className="productList">
+      <div className="prouductList__header">Our Products</div>
 
-export default function  ProductList (){
-  const  [products, setProducts] = useState();
-    const  [limit,setLimit] = useState(3);
-
-
-  let cart = useContext(UserContext)
-    useEffect(() => {
-   
-        getProducts();
-    }, [cart.filter,limit,cart.search,cart.price]);
-
-    
-
-  
-  
-    
-
-    return (
-      
-        <CartConsumer>
-        {
-       
-          value => (
-          
-        
-            <div className="productList">
-          <div className="prouductList__header">
-              Our Products
-          </div>
-  
-          {
-        
-        products?.length>0 ? (
-        
+      {!isLoading ? (
+        products?.length > 0 ? (
           <>
-                 <div className='cardList'>
-        {
-          
-             products.map( (item)=> (
-      
-     <SingleCard key={item.id} products = {item} />
-  
+            <div className="cardList">
              
-            ) )
-      }
-            </div>,
-  
-            <div >
-              <button className="product__Load" hidden={cart.load} onClick={loadMore}>Load More</button>
+              {products.slice(0, limit).map((item) => (
+                <SingleCard key={item.id} products={item} />
+              ))}
+            </div>
+            ,
+            <div>
+              <button
+                className="product__Load"
+                hidden={cart.load}
+                onClick={loadMore}
+              >
+                Load More
+              </button>
             </div>
           </>
-            
-        ):(
-        
-          
-           <>
-        
-       
-           <div style={{textAlign:'center',fontWeight:"Bold",fontSize:"30px"}}>
-            <i className="fa-brands fa-dropbox"></i><br></br>
-            Could Not Find AnyThing</div> 
-
-           </>
-          
+        ) : (
+          <>
+            <div
+              style={{
+                textAlign: "center",
+                fontWeight: "Bold",
+                fontSize: "30px",
+              }}
+            >
+              <i className="fa-brands fa-dropbox"></i>
+              <br></br>
+              Could Not Find AnyThing
+            </div>
+          </>
         )
-       }
-      
-  
-      </div>
-           
-        
-          )
-        }
-        </CartConsumer>
-      
-    );
+      ) : (
+        <div className="loader">Loading...</div>
+      )}
+    </div>
 
-async function getProducts(){
-  let url =""
-  
-  cart.window ? url =`https://fakestoreapi.com/products?limit=${limit}` : url=`https://fakestoreapi.com/products/${cart.filter}` 
+    // </CartConsumer>
+  );
+  async function getData() {
 
-   
-  
-    let resp = await axios.get(url)
-  
+    //FETCH DATA FROM SERVER
+    let url = "";
 
+    cart.window
+      ? (url = `https://fakestoreapi.com/products`)
+      : (url = `https://fakestoreapi.com/products/${cart.filter}`);
 
+    let resp = await axios.get(url);
 
-    let result=resp.data.filter((items)=>{
-   
-      
-      
-      return items.title.replace(/\s/g, "").toLowerCase().includes(cart.search.toLowerCase());
-    })
+    setLoading(false);
 
-    if(cart.price!=0){
-   
-     result = result.filter((items)=>{
-       
+    //SEARCH THE DATA FROM SERVER 
+
+    let result = resp.data.filter((items) => {
+      return items.title
+        .replace(/\s/g, "")
+        .toLowerCase()
+        .includes(cart.search.toLowerCase());
+    });
+
+    //FILTER BASED ON PRICE
+    if (cart.price != 0) {
+      result = result.filter((items) => {
         return items.price <= cart.price;
-      })
+      });
     }
 
-    if(result?.length>limit){
-      cart.setLoad(false)
-    }else{
-      cart.setLoad(true)
-    }
-  
-    if(!cart.window){
-      result = result.slice(0,limit)
+    setSlice(result);
+    if (result?.length > limit) {
+      cart.setLoad(false);
+    } else {
+      cart.setLoad(true);
     }
 
-   
-   
+    setProducts(result);
+    cart.setNav("navBar__center");
+  }
 
-    setProducts(result)
-
-    cart.setNav("navBar__center")
-
-    
+  function loadMore() {
+    //CHANGINNG LIMIT
+    setLimit(limit + 3);
+  }
 }
 
-
-
-function loadMore(){
-  setLimit(limit+3)
-
-}
-}
-
+export default ProductList;

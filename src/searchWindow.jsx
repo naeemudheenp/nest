@@ -1,25 +1,21 @@
 import ProductList from "./productList";
 import SideBar from "./sideBar";
 import NavBar from "./navBar";
-import { UserContext, } from "./App";
-import {React, useContext,useEffect} from 'react';
+import { UserContext } from "./App";
+import { React, useContext, useEffect } from "react";
 
-export default function  SearchWindow(){
-  let cart = useContext(UserContext)
+export default function SearchWindow() {
+  let cart = useContext(UserContext);
   useEffect(() => {
-    cart.setFilter("")
+    cart.setFilter("");
   }, []);
-  
-    return(    
-    
-   <>
- 
-    <div className="searchWindow">
-         
-         <SideBar />    
-         <ProductList />
-     </div>
-   </>
-)
 
+  return (
+    <>
+      <div className="searchWindow">
+        <SideBar />
+        <ProductList />
+      </div>
+    </>
+  );
 }
