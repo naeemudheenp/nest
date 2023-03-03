@@ -2,9 +2,9 @@
 import MainScreen from './mainScreen';
 import ProductList from './productList';
 import React from 'react';
-import NavBar from "./navBar";      
+  
 
-
+//HOME WINDOW
 export default function HomeWindow(){
    
     return(
