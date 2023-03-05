@@ -2,7 +2,7 @@ import { React, useContext } from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import CartCard from "./cartCard";
-import { UserContext } from "./App";
+import { UserContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 
 export default function CartWindow() {

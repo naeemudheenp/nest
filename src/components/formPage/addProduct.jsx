@@ -1,7 +1,7 @@
 import { React, useContext } from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { UserContext, CartConsumer } from "./App";
+import { UserContext, CartConsumer } from "../../App";
 import FormInput from "./formInput";
 
 
@@ -41,7 +41,7 @@ export default function AddProduct() {
 
     }
     else if(type==="Description"){
-      setDescription(e.target.value)
+      setDescription(e.target.value )
     }
   }
 

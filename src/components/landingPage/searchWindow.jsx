@@ -1,7 +1,7 @@
 import ProductList from "./productList";
 import SideBar from "./sideBar";
 import NavBar from "./navBar";
-import { UserContext } from "./App";
+import { UserContext } from "../../App";
 import { React, useContext, useEffect } from "react";
 
 export default function SearchWindow() {

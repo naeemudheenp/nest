@@ -1,5 +1,5 @@
 import {React, useContext} from 'react';
-import { UserContext,CartConsumer } from "./App";
+import { UserContext,CartConsumer } from "../../App";
 import { useNavigate } from 'react-router-dom';
 export default function CartIcon( ){
     //CART ICON WITH CART LENGTH

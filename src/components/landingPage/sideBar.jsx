@@ -1,4 +1,4 @@
-import { UserContext } from "./App";
+import { UserContext } from "../../App";
 import { React, useContext } from "react";
 
 export default function SideBar() {

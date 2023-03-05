@@ -1,7 +1,7 @@
 import { React, useContext} from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { UserContext, CartConsumer } from "./App";
+import { UserContext, CartConsumer } from "../../App";
 import { useParams } from "react-router-dom";
 
 import { Outlet, Link } from "react-router-dom";

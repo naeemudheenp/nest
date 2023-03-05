@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext,useState,useEffect } from "react";
-import { UserContext } from "./App";
+import { UserContext } from "../../App";
 
 //seperate componenet for icon which is used to add to cart
 function CartAdd({ id }) {

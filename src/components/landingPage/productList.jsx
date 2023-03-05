@@ -2,8 +2,8 @@ import React from "react";
 import { useContext } from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import SingleCard from "./singleCard";
-import { UserContext } from "./App";
+import SingleCard from "../singlePage/singleCard";
+import { UserContext } from "../../App";
 
 function ProductList() {
   const [products, setProducts] = useState();

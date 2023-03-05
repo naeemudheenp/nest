@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useNavigate } from "react-router-dom";
-import CartAdd from "./cart_icon_add";
+import CartAdd from "../landingPage/cart_icon_add";
 
 function SingleCard({ products }) {
   const navigate = useNavigate();

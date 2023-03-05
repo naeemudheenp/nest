@@ -1,6 +1,6 @@
 import { useState, createContext, useContext } from "react";
 import { React } from "react";
-import { UserContext } from "./App";
+import { UserContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 
 
@@ -9,8 +9,8 @@ export default function CartCard({ products }) {
   const navigate = useNavigate();//use to naviagte
 
   function gotoProduct(id) {
-    cart.setId(id);
-    navigate("/product");//naviagte to single product
+   
+    navigate(`/product/${id}`);//naviagte to single product
   }
 
   const cart = useContext(UserContext);

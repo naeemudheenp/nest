@@ -1,6 +1,6 @@
 import React from "react";
 import { useContext } from "react";
-import { UserContext } from "./App";
+import { UserContext } from "../../App";
 import CartIcon from "./cartIcon";
 import { useNavigate } from "react-router-dom";
 
