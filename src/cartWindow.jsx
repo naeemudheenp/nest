@@ -66,9 +66,9 @@ export default function CartWindow() {
 
     let finalArray = [];
 
-    let url = `https://fakestoreapi.com/products`;
+   
 
-    let resp = await axios.get(url);
+    let resp = await axios.get(process.env.REACT_APP_BASE_URL);
 
     setLoading(false);
 

@@ -8,7 +8,7 @@ function SingleCard({ products }) {
 
   function gotoProduct(id) {
     // cart.setId(id);
-    navigate("/product");
+    navigate(`/product/${id}`);
   }
 
   return (

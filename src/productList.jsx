@@ -3,25 +3,25 @@ import { useContext } from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import SingleCard from "./singleCard";
-import { UserContext, } from "./App";
+import { UserContext } from "./App";
 
 function ProductList() {
   const [products, setProducts] = useState();
   const [limit, setLimit] = useState(3);
   const [isLoading, setLoading] = useState(true);
 
-  const [slice, setSlice] = useState([]);
   let cart = useContext(UserContext);
 
   useEffect(() => {
+    setLoading(true);
     getData();
+
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
   }, [cart.filter, cart.search, cart.price]);
 
-  useEffect(() => {}, [limit]);
-
   return (
- 
-
     <div className="productList">
       <div className="prouductList__header">Our Products</div>
 
@@ -29,7 +29,6 @@ function ProductList() {
         products?.length > 0 ? (
           <>
             <div className="cardList">
-             
               {products.slice(0, limit).map((item) => (
                 <SingleCard key={item.id} products={item} />
               ))}
@@ -68,19 +67,16 @@ function ProductList() {
     // </CartConsumer>
   );
   async function getData() {
+    setLoading(true);
 
     //FETCH DATA FROM SERVER
-    let url = "";
+    let resp = "";
 
     cart.window
-      ? (url = `https://fakestoreapi.com/products`)
-      : (url = `https://fakestoreapi.com/products/${cart.filter}`);
+      ? (resp = await axios.get(process.env.REACT_APP_BASE_URL))
+      : (resp = await axios.get(process.env.REACT_APP_BASE_URL + cart.filter));
 
-    let resp = await axios.get(url);
-
-    setLoading(false);
-
-    //SEARCH THE DATA FROM SERVER 
+    //SEARCH THE DATA FROM SERVER
 
     let result = resp.data.filter((items) => {
       return items.title
@@ -96,7 +92,6 @@ function ProductList() {
       });
     }
 
-    setSlice(result);
     if (result?.length > limit) {
       cart.setLoad(false);
     } else {

@@ -2,10 +2,9 @@ import { React, useContext } from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { UserContext, CartConsumer } from "./App";
+import FormInput from "./formInput";
 
-import { Outlet, Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import { upload } from "@testing-library/user-event/dist/upload";
+
 export default function AddProduct() {
   // const titleRef = React.useRef(null);
   // const priceRef = React.useRef(null);
@@ -26,35 +25,60 @@ export default function AddProduct() {
   useEffect(() => {
     //changing height of form by changing class
     cart.setNav("navBar__center hidden ");
-  }, [cart.form, image]);
+  }, [cart.form, image,title]);
+
+  function Setter(e,type){
+    e.preventDefault()
+    if(type==="title"){
+     
+      setTitle(e.target.value)
+    }
+    else if(type==="price"){
+      setPrice(e.target.value)
+    }
+    else if(type==="Category"){
+      setCategory(e.target.value)
+
+    }
+    else if(type==="Description"){
+      setDescription(e.target.value)
+    }
+  }
+
+ 
 
   return (
     //accessing values
     <form className={cart.add}>
       <div className="form__header">Add Product</div>
       <div className="form__inputs">
-        <input
-          type="text"
-          name="title"
-          placeholder="Title"
-          onChange={(e) => setTitle(e.target.value)}
-        ></input>
+   
 
-        <input
+        <FormInput  name={"Title"} func={(e)=>{Setter(e,"title")}}  />
+        <FormInput  name={"Price"} func={(e)=>{Setter(e,"price")}}  />
+        <FormInput  name={"Category"} func={(e)=>{Setter(e,"Category")}}  />
+        <FormInput  name={"Description"} func={(e)=>{Setter(e,"Description")}}  />
+
+
+
+
+
+      
+        {/* <input
           type="text"
           placeholder="Price"
           onChange={(e) => setPrice(e.target.value)}
-        ></input>
-        <input
+        ></input> */}
+        {/* <input
           type="text"
           placeholder="Category"
           onChange={(e) => setCategory(e.target.value)}
-        ></input>
-        <input
+        ></input> */}
+        {/* <input
           type="text"
           placeholder="Description"
           onChange={(e) => setDescription(e.target.value)}
-        ></input>
+        ></input> */}
 
         <input
           type="file"
@@ -85,6 +109,7 @@ export default function AddProduct() {
 
   async function Upload(e) {
     e.stopPropagation();
+
 
     if (
       (title != "") &

@@ -11,6 +11,21 @@ export default function NavBar() {
 
   const cart = useContext(UserContext);
 
+  function userInput(e){
+    
+    if (e.currentTarget.value == "") {
+      cart.setSearch("");
+      cart.setWindow(true);
+    } else {
+
+      
+      cart.setSearch(
+        e.currentTarget.value.replace(/\s/g, "").toLocaleLowerCase()//APPLYING SEARCH BY CLEARING ALL SPACES
+      );
+      cart.setWindow(false);
+    }
+  }
+
   return (
     <div className="navBar">
       <div
@@ -27,17 +42,9 @@ export default function NavBar() {
           <input
             type="text"
             placeholder="Search Products |"
-            onChange={(e) => {
-              if (e.currentTarget.value == "") {
-                cart.setSearch("");
-                cart.setWindow(true);
-              } else {
-                cart.setSearch(
-                  e.currentTarget.value.replace(/\s/g, "").toLocaleLowerCase()//APPLYING SEARCH BY CLEARING ALL SPACES
-                );
-                cart.setWindow(false);
-              }
-            }}
+            onChange={
+              userInput
+            }
           ></input>
         </div>
       </div>

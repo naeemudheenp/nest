@@ -652,4 +652,7 @@ html button, body button {
   100% {
     transform: rotate(360deg);
   }
+}
+.no-click {
+  pointer-events: none;
 }/*# sourceMappingURL=main.css.map */

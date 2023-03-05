@@ -1,7 +1,8 @@
-import { React, useContext } from "react";
+import { React, useContext} from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { UserContext, CartConsumer } from "./App";
+import { useParams } from "react-router-dom";
 
 import { Outlet, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -10,9 +11,12 @@ export default function SinglePage() {
   const [products, setProducts] = useState();
   let cart = useContext(UserContext);
   const navigate = useNavigate();
+
   useEffect(() => {
     getProducts();
   }, []);
+
+  let  id  = useParams();
 
   return products != null ? (
     <>
@@ -68,9 +72,9 @@ export default function SinglePage() {
 
     let url = "";
 
-    url = `https://fakestoreapi.com/products/${cart.currentId}`;
+    url = `https://fakestoreapi.com/products/${id}`;
 
-    let resp = await axios.get(url);
+    let resp = await axios.get(process.env.REACT_APP_BASE_URL+cart.currentId);
 
     let result = resp.data;
 

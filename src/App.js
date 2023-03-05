@@ -16,7 +16,7 @@ import HomeWindow from './home';
 import SearchWindow from './searchWindow';
 import CartWindow from './cartWindow';
 import AddProduct from './addProduct';
-export const UserContext = React.createContext();
+export const  UserContext = React.createContext();
 export const CartConsumer = UserContext.Consumer;
 
 
@@ -75,7 +75,7 @@ return (
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={ currentWindow ? (<HomeWindow />) : (<SearchWindow />)} />
-          <Route path="/product" element={<SinglePage />} />
+          <Route path="/product/:id" element={<SinglePage />} />
           <Route path="/cart" element={<CartWindow />} />
           <Route path="/add" element={<AddProduct />} />
 
