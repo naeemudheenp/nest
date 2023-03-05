@@ -1,17 +1,13 @@
-
-import MainScreen from './mainScreen';
-import ProductList from './productList';
-import React from 'react';
-  
+import MainScreen from "./mainScreen";
+import ProductList from "./productList";
+import React from "react";
 
 //HOME WINDOW
-export default function HomeWindow(){
-   
-    return(
-        <>
-     
-        <MainScreen />
-        <ProductList />
-        </>
-    );
+export default function HomeWindow() {
+  return (
+    <>
+      <MainScreen />
+      <ProductList />
+    </>
+  );
 }

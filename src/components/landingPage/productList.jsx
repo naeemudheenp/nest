@@ -21,6 +21,47 @@ function ProductList() {
     }, 2000);
   }, [cart.filter, cart.search, cart.price]);
 
+  async function getData() {
+    setLoading(true);
+
+    //FETCH DATA FROM SERVER
+    let resp = "";
+
+    cart.window
+      ? (resp = await axios.get(process.env.REACT_APP_BASE_URL))
+      : (resp = await axios.get(process.env.REACT_APP_BASE_URL + cart.filter));
+
+    //SEARCH THE DATA FROM SERVER
+
+    let result = resp.data.filter((items) => {
+      return items.title
+        .replace(/\s/g, "")
+        .toLowerCase()
+        .includes(cart.search.toLowerCase());
+    });
+
+    //FILTER BASED ON PRICE
+    if (cart.price != 0) {
+      result = result.filter((items) => {
+        return items.price <= cart.price;
+      });
+    }
+
+    if (result?.length > limit) {
+      cart.setLoad(false);
+    } else {
+      cart.setLoad(true);
+    }
+
+    setProducts(result);
+    cart.setNav("navBar__center");
+  }
+
+  function loadMore() {
+    //CHANGINNG LIMIT
+    setLimit(limit + 3);
+  }
+
   return (
     <div className="productList">
       <div className="prouductList__header">Our Products</div>
@@ -63,49 +104,7 @@ function ProductList() {
         <div className="loader">Loading...</div>
       )}
     </div>
-
-    // </CartConsumer>
   );
-  async function getData() {
-    setLoading(true);
-
-    //FETCH DATA FROM SERVER
-    let resp = "";
-
-    cart.window
-      ? (resp = await axios.get(process.env.REACT_APP_BASE_URL))
-      : (resp = await axios.get(process.env.REACT_APP_BASE_URL + cart.filter));
-
-    //SEARCH THE DATA FROM SERVER
-
-    let result = resp.data.filter((items) => {
-      return items.title
-        .replace(/\s/g, "")
-        .toLowerCase()
-        .includes(cart.search.toLowerCase());
-    });
-
-    //FILTER BASED ON PRICE
-    if (cart.price != 0) {
-      result = result.filter((items) => {
-        return items.price <= cart.price;
-      });
-    }
-
-    if (result?.length > limit) {
-      cart.setLoad(false);
-    } else {
-      cart.setLoad(true);
-    }
-
-    setProducts(result);
-    cart.setNav("navBar__center");
-  }
-
-  function loadMore() {
-    //CHANGINNG LIMIT
-    setLimit(limit + 3);
-  }
 }
 
 export default ProductList;

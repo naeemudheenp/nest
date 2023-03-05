@@ -20,6 +20,7 @@ function SingleCard({ products }) {
         }}
       >
         <img
+          alt="product "
           onClick={() => {
             gotoProduct(products.id);
           }}

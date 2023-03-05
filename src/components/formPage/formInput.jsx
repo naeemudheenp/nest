@@ -1,14 +1,15 @@
-import React from "react"
+import React from "react";
 
-function FormInput( {name,func,title}){
-    return ( <input
+function FormInput({ name, func, title }) {
+  return (
+    <input
       type="text"
       name={name}
       placeholder={name}
       value={title}
       onChange={(e) => func(e)}
-      
-    ></input>)
-  }
+    ></input>
+  );
+}
 
-  export default FormInput
+export default FormInput;

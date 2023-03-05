@@ -5,22 +5,18 @@ import CartIcon from "./cartIcon";
 import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
-
   //NAVIGATION BAR
   const navigate = useNavigate();
 
   const cart = useContext(UserContext);
 
-  function userInput(e){
-    
+  function userInput(e) {
     if (e.currentTarget.value == "") {
       cart.setSearch("");
       cart.setWindow(true);
     } else {
-
-      
       cart.setSearch(
-        e.currentTarget.value.replace(/\s/g, "").toLocaleLowerCase()//APPLYING SEARCH BY CLEARING ALL SPACES
+        e.currentTarget.value.replace(/\s/g, "").toLocaleLowerCase() //APPLYING SEARCH BY CLEARING ALL SPACES
       );
       cart.setWindow(false);
     }
@@ -42,9 +38,7 @@ export default function NavBar() {
           <input
             type="text"
             placeholder="Search Products |"
-            onChange={
-              userInput
-            }
+            onChange={userInput}
           ></input>
         </div>
       </div>

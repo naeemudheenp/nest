@@ -1,24 +1,23 @@
 import React from "react";
-import { useContext,useState,useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../../App";
 
 //seperate componenet for icon which is used to add to cart
 function CartAdd({ id }) {
-  const cart  = useContext(UserContext);
-  const [disabled, setdisabled] = useState(false);
-  const [style, setstyle] = useState( "fa-solid fa-cart-plus");
+  const cart = useContext(UserContext);
+
+  const [style, setstyle] = useState("fa-solid fa-cart-plus");
 
   useEffect(() => {
     checkCart();
   }, []);
- 
-  function checkCart(){
-    let status = cart.cart.find((id1)=>{
-      return id1==id
+
+  function checkCart() {
+    let status = cart.cart.find((id1) => {
+      return id1 == id;
     });
-    if(status){
-      setdisabled(true)
-      setstyle("fa-solid fa-check no-click")
+    if (status) {
+      setstyle("fa-solid fa-check no-click");
     }
   }
 
@@ -32,19 +31,19 @@ function CartAdd({ id }) {
     firstChild.classList.add("fa-check");
     firstChild.classList.add("no-click");
 
-    //upload data to cart context 
+    //upload data to cart context
     cart.setCart((previousState) => {
       const newId = id;
       return previousState.concat(newId);
     });
 
-    event.target.disabled=true;
+    event.target.disabled = true;
   }
   return (
     <div className="card__flex_icon">
-      <i  className={style} onClick={(e) => addtoCart(e)}></i>
+      <i className={style} onClick={(e) => addtoCart(e)}></i>
     </div>
   );
 }
-//use to memoize component. 
+//use to memoize component.
 export default React.memo(CartAdd);
