@@ -1,13 +1,12 @@
-import { useState, createContext, useContext } from "react";
+import { useContext } from "react";
 import { Outlet, Link } from "react-router-dom";
 import NavBar from "./navBar";
-import { useNavigate } from "react-router-dom";
-import AddProduct from "./addProduct";
-import { UserContext } from "./App";
+
+import AddProduct from "../formPage/addProduct";
+import { UserContext } from "../../App";
 import Footer from "./footer";
 
 const Layout = () => {
-  const navigate = useNavigate();
   const cart = useContext(UserContext);
   return (
     <>
@@ -16,7 +15,6 @@ const Layout = () => {
       <Footer />
 
       <div>
-        {/* cart.setAdd("form height") */}
         <AddProduct />
         <div
           onClick={() => {

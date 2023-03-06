@@ -1,14 +1,14 @@
 import React from "react";
 
 import { useNavigate } from "react-router-dom";
-import CartAdd from "./cart_icon_add";
+import CartAdd from "../landingPage/cart_icon_add";
 
 function SingleCard({ products }) {
   const navigate = useNavigate();
 
   function gotoProduct(id) {
     // cart.setId(id);
-    navigate("/product");
+    navigate(`/product/${id}`);
   }
 
   return (
@@ -20,6 +20,7 @@ function SingleCard({ products }) {
         }}
       >
         <img
+          alt="product "
           onClick={() => {
             gotoProduct(products.id);
           }}

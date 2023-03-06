@@ -1,8 +1,7 @@
-import { UserContext } from "./App";
+import { UserContext } from "../../App";
 import { React, useContext } from "react";
 
 export default function SideBar() {
-
   //SETING CATEGORY FILTER
   function setCategory(category) {
     if (category == "") {
@@ -97,15 +96,6 @@ export default function SideBar() {
         {" "}
         Filter Price : &#8377;{cart.price}
       </div>
-
-      {/* <button
-        onClick={() => {
-          cart.setPrice(0);
-          alert("Filter Cleared.");
-        }}
-      >
-        Clear Price Filter
-      </button> */}
     </div>
   );
 }

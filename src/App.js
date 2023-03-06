@@ -3,20 +3,20 @@ import React from 'react';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 
-import SinglePage from './singlePage';
-import Layout from './LayoutWindow'
-import './App.css';
-import './navBar'
+import SinglePage from './components/singlePage/singlePage';
+import Layout from './components/landingPage/LayoutWindow'
+import './css/App.css';
+import './components/landingPage/navBar'
 
 import './css/main.css'
 
 import { useState, } from "react";
 
-import HomeWindow from './home';
-import SearchWindow from './searchWindow';
-import CartWindow from './cartWindow';
-import AddProduct from './addProduct';
-export const UserContext = React.createContext();
+import HomeWindow from './components/landingPage/home';
+import SearchWindow from './components/landingPage/searchWindow';
+import CartWindow from './components/cartPage/cartWindow';
+import AddProduct from './components/formPage/addProduct';
+export const  UserContext = React.createContext();
 export const CartConsumer = UserContext.Consumer;
 
 
@@ -75,7 +75,7 @@ return (
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={ currentWindow ? (<HomeWindow />) : (<SearchWindow />)} />
-          <Route path="/product" element={<SinglePage />} />
+          <Route path="/product/:id" element={<SinglePage />} />
           <Route path="/cart" element={<CartWindow />} />
           <Route path="/add" element={<AddProduct />} />
 

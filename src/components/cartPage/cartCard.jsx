@@ -1,19 +1,36 @@
-import { useState, createContext, useContext } from "react";
+import { useContext } from "react";
 import { React } from "react";
-import { UserContext } from "./App";
+import { UserContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 
-
-
 export default function CartCard({ products }) {
-  const navigate = useNavigate();//use to naviagte
+  const navigate = useNavigate(); //use to naviagte
+  const cart = useContext(UserContext);
 
   function gotoProduct(id) {
-    cart.setId(id);
-    navigate("/product");//naviagte to single product
+    navigate(`/product/${id}`); //naviagte to single product
   }
 
-  const cart = useContext(UserContext);
+  async function removefromCart(e, id) {
+    e.stopPropagation();
+
+    cart.setCart(cart.cart.filter((item) => item != id));
+  }
+
+  function getStar(rate) {
+    //getting star
+    let componentArray = [
+      <i key="sample1" className="fa-solid fa-star"></i>,
+      <i key="sample2" className="fa-solid fa-star"></i>,
+      <i key="sample3" className="fa-solid fa-star"></i>,
+      <i key="sample4" className="fa-solid fa-star"></i>,
+      <i key="sample5" className="fa-solid fa-star"></i>,
+    ];
+
+    componentArray = componentArray.slice(0, Math.ceil(rate));
+
+    return <div>{componentArray}</div>;
+  }
 
   return (
     <div className="cartCard">
@@ -24,6 +41,7 @@ export default function CartCard({ products }) {
         }}
       >
         <img
+          alt="product"
           onClick={() => {
             gotoProduct(products.id);
           }}
@@ -70,25 +88,4 @@ export default function CartCard({ products }) {
       </div>
     </div>
   );
-
-  async function removefromCart(e, id) {
-    e.stopPropagation();
-
-    cart.setCart(cart.cart.filter((item) => item != id));
-  }
-
-  function getStar(rate) {
-    //getting star
-    let componentArray = [
-      <i key="sample1" className="fa-solid fa-star"></i>,
-      <i key="sample2" className="fa-solid fa-star"></i>,
-      <i key="sample3" className="fa-solid fa-star"></i>,
-      <i key="sample4" className="fa-solid fa-star"></i>,
-      <i key="sample5" className="fa-solid fa-star"></i>,
-    ];
-
-    componentArray = componentArray.slice(0, Math.ceil(rate));
-
-    return <div>{componentArray}</div>;
-  }
 }
