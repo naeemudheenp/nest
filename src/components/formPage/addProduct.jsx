@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { UserContext } from "../../App";
 import FormInput from "./formInput";
+import up from './assets/up.png'; 
 
 export default function AddProduct() {
   //state used store value from form
@@ -11,6 +12,7 @@ export default function AddProduct() {
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
+  
 
   //context
   let cart = useContext(UserContext);
@@ -101,7 +103,7 @@ export default function AddProduct() {
             setImage(URL.createObjectURL(e.target.files[0]));
           }}
         ></input>
-        <img src={image} height="20%" width="20%" alt="Select Image"></img>
+        {image !== "" ? (<img src={image} height="20%" width="20%" alt="Uploaded Image"></img>):(<div></div>)}
       </div>
       <div className="form__button">
         <button type="button" onClick={Upload}>

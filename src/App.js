@@ -5,7 +5,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 import SinglePage from './components/singlePage/singlePage';
 import Layout from './components/landingPage/LayoutWindow'
-import './App.css';
+import './css/App.css';
 import './components/landingPage/navBar'
 
 import './css/main.css'
